@@ -43,15 +43,15 @@
                             <li>
                                 @if(Auth::user()->role->id == 1)
                                     <a href="{{ route('admin.dashboard') }}" class="teal-text">
-                                        <i class="material-icons">person</i>Quản lý
+                                        <i class="material-icons">person</i>Quản trị
                                     </a>
                                 @elseif(Auth::user()->role->id == 2)
                                     <a href="{{ route('agent.dashboard') }}" class="teal-text">
-                                        <i class="material-icons">person</i>Quản lý
+                                    <i class="material-icons">person</i>Tài khoản
                                     </a>
                                 @elseif(Auth::user()->role->id == 3)
                                     <a href="{{ route('user.dashboard') }}" class="teal-text">
-                                        <i class="material-icons">person</i>Quản lý
+                                        <i class="material-icons">person</i>Tài khoản
                                     </a>
                                 @endif
                             </li>
@@ -81,10 +81,6 @@
 
         <li class="{{ Request::is('property*') ? 'active' : '' }}">
             <a href="{{ route('property') }}">Tài sản</a>
-        </li>
-
-        <li class="{{ Request::is('agents*') ? 'active' : '' }}">
-            <a href="{{ route('agents') }}">Chủ nhà</a>
         </li>
 
         <li class="{{ Request::is('blog*') ? 'active' : '' }}">
