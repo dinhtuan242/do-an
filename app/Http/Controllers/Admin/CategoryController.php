@@ -60,7 +60,7 @@ class CategoryController extends Controller
         $category->image = $imagename;
         $category->save();
 
-        Toastr::success('message', 'Category created successfully.');
+        Toastr::success('message', 'Thêm danh mục thành công');
         return redirect()->route('admin.categories.index');
     }
 
