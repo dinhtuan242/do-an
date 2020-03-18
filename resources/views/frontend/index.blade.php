@@ -127,7 +127,7 @@
                             <span class="card-title tooltipped" data-position="bottom" data-tooltip="{{$post->title}}">
                                 <a href="{{ route('blog.show',$post->slug) }}">{{ str_limit($post->title,18) }}</a>
                             </span>
-                            {!! str_limit($post->body,120) !!}
+                            {!! str_limit($post->body,30) !!}
                         </div>
                         <div class="card-action blog-action">
                             <a href="{{ route('blog.author',$post->user->username) }}" class="btn-flat">
