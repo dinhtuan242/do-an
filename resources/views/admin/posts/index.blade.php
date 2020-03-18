@@ -34,9 +34,7 @@
                                     <th>Tên bài viết</th>
                                     <th>Tác giả</th>
                                     <th>Thể loại</th>
-                                    <th><i class="material-icons">visibility</i></th>
                                     <th>Trạng thái</th>
-                                    <th><i class="material-icons small">Số comment</i></th>
                                     <th width="150">Hành động</th>
                                 </tr>
                             </thead>
@@ -64,19 +62,12 @@
                                             {{$category->name}}
                                         @endforeach
                                     </td>
-                                    <td>{{$post->view_count}}</td>
                                     <td>
                                         @if($post->status == true)
                                             <span class="badge bg-green">Công khai</span>
                                         @else 
                                             <span class="badge bg-pink">Đang chờ</span>
                                         @endif
-                                    </td>
-                                    <td>
-                                        <span class="badge">
-                                            <i class="material-icons small left">comment</i>
-                                            {{ $post->comments_count }}
-                                        </span>
                                     </td>
                                     <td class="text-center">
                                         <a href="{{route('blog.show',$post->slug)}}" target="_blank" class="btn btn-success btn-sm waves-effect">

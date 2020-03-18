@@ -115,8 +115,8 @@
                             <label>Kiểu tài sản</label>
                             <select name="purpose" class="form-control show-tick">
                                 <option value="">-- Chọn một --</option>
-                                <option value="sale">Bán</option>
-                                <option value="rent">Cho thuê</option>
+                                <option value="Bán">Bán</option>
+                                <option value="Cho thuê">Cho thuê</option>
                             </select>
                         </div>
                     </div>
@@ -126,8 +126,8 @@
                             <label>Loại tài sản</label>
                             <select name="type" class="form-control show-tick">
                                 <option value="">-- Chọn một --</option>
-                                <option value="house">Nhà</option>
-                                <option value="apartment">Căn hộ</option>
+                                <option value="Nhà">Nhà</option>
+                                <option value="Căn hộ">Căn hộ</option>
                             </select>
                         </div>
                     </div>

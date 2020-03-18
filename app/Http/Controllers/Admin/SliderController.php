@@ -53,7 +53,7 @@ class SliderController extends Controller
         $slider->image = $imagename;
         $slider->save();
 
-        Toastr::success('message', 'Slider created successfully.');
+        Toastr::success('message', 'Thêm banner thành công');
         return redirect()->route('admin.sliders.index');
     }
 
@@ -95,7 +95,7 @@ class SliderController extends Controller
         $slider->image = $imagename;
         $slider->save();
 
-        Toastr::success('message', 'Slider updated successfully.');
+        Toastr::success('message', 'Sửa banner thành công');
         return redirect()->route('admin.sliders.index');
     }
 
@@ -109,7 +109,7 @@ class SliderController extends Controller
 
         $slider->delete();
 
-        Toastr::success('message', 'Slider deleted successfully.');
+        Toastr::success('message', 'Xoá Banner thành công');
         return back();
     }
 }

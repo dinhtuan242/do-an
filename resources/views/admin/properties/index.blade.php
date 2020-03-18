@@ -35,10 +35,6 @@
                                     <th>Tác giả</th>
                                     <th>Loại tài sản</th>
                                     <th>Kiểu tài sản</th>
-                                    <th>Số phòng ngủ</th>
-                                    <th>Số phòng tắm</th>
-                                    <th><i class="material-icons small">comment</i></th>
-                                    <th><i class="material-icons small">stars</i></th>
                                     <th width="150">Hành động</th>
                                 </tr>
                             </thead>
@@ -60,18 +56,6 @@
                                     <td>{{$property->user->name}}</td>
                                     <td>{{$property->type}}</td>
                                     <td>{{$property->purpose}}</td>
-                                    <td>{{$property->bedroom}}</td>
-                                    <td>{{$property->bathroom}}</td>
-
-                                    <td>
-                                        <span class="badge bg-teal">{{ $property->comments_count }}</span>
-                                    </td>
-
-                                    <td>
-                                        @if($property->featured == true)
-                                            <span class="badge bg-teal"><i class="material-icons small">star</i></span>
-                                        @endif
-                                    </td>
 
                                     <td class="text-center">
                                         <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-success btn-sm waves-effect">

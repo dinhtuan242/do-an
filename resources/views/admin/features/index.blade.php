@@ -31,7 +31,6 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên tiện ích</th>
-                                    <th>Slug</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -39,7 +38,6 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên tiện ích</th>
-                                    <th>Slug</th>
                                     <th>Hành động</th>
                                 </tr>
                             </tfoot>
@@ -48,7 +46,6 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$feature->name}}</td>
-                                    <td>{{$feature->slug}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.features.edit',$feature->id)}}" class="btn btn-info btn-sm waves-effect">
                                             <i class="material-icons">edit</i>

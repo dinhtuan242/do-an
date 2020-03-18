@@ -38,7 +38,7 @@
                     <i class="material-icons">person_add</i>
                 </div>
                 <div class="content">
-                    <div class="text">TỔNG SỐ NGƯỜI DÙNG</div>
+                    <div class="text">TỔNG NGƯỜI DÙNG</div>
                     <div class="number count-to" data-from="0" data-to="{{ $usercount }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -62,7 +62,6 @@
                                     <th>Tên</th>
                                     <th>Giá</th>
                                     <th>Thành phố</th>
-                                    <th><i class="material-icons small">star</i></th>
                                     <th>Người đăng</th>
                                 </tr>
                             </thead>
@@ -77,11 +76,6 @@
                                     </td>
                                     <td>{{ $property->price }} triệu đồng</td>
                                     <td>{{ $property->city }}</td>
-                                    <td>
-                                        @if($property->featured == 1)
-                                            <span class="label bg-green">F</span>
-                                        @endif
-                                    </td>
                                     <td>{{ strtok($property->user->name, " ")}}</td>
                                 </tr>
                                 @endforeach

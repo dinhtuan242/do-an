@@ -1,33 +1,33 @@
 <?php
 
 // FRONT-END ROUTES
-Route::get('/', 'FrontpageController@index')->name('home');
-Route::get('/slider', 'FrontpageController@slider')->name('slider.index');
+Route::get('/', 'FrontpageController@index')->name('home')->middleware('auth');
+Route::get('/slider', 'FrontpageController@slider')->name('slider.index')->middleware('auth');
 
-Route::get('/search', 'FrontpageController@search')->name('search');
+Route::get('/search', 'FrontpageController@search')->name('search')->middleware('auth');
 
-Route::get('/property', 'PagesController@properties')->name('property');
-Route::get('/property/{id}', 'PagesController@propertieshow')->name('property.show');
-Route::post('/property/message', 'PagesController@messageAgent')->name('property.message');
-Route::post('/property/comment/{id}', 'PagesController@propertyComments')->name('property.comment');
-Route::post('/property/rating', 'PagesController@propertyRating')->name('property.rating');
-Route::get('/property/city/{cityslug}', 'PagesController@propertyCities')->name('property.city');
+Route::get('/property', 'PagesController@properties')->name('property')->middleware('auth');
+Route::get('/property/{id}', 'PagesController@propertieshow')->name('property.show')->middleware('auth');
+Route::post('/property/message', 'PagesController@messageAgent')->name('property.message')->middleware('auth');
+Route::post('/property/comment/{id}', 'PagesController@propertyComments')->name('property.comment')->middleware('auth');
+Route::post('/property/rating', 'PagesController@propertyRating')->name('property.rating')->middleware('auth');
+Route::get('/property/city/{cityslug}', 'PagesController@propertyCities')->name('property.city')->middleware('auth');
 
-Route::get('/agents', 'PagesController@agents')->name('agents');
-Route::get('/agents/{id}', 'PagesController@agentshow')->name('agents.show');
+Route::get('/agents', 'PagesController@agents')->name('agents')->middleware('auth');
+Route::get('/agents/{id}', 'PagesController@agentshow')->name('agents.show')->middleware('auth');
 
-Route::get('/gallery', 'PagesController@gallery')->name('gallery');
+Route::get('/gallery', 'PagesController@gallery')->name('gallery')->middleware('auth');
 
-Route::get('/blog', 'PagesController@blog')->name('blog');
-Route::get('/blog/{id}', 'PagesController@blogshow')->name('blog.show');
-Route::post('/blog/comment/{id}', 'PagesController@blogComments')->name('blog.comment');
+Route::get('/blog', 'PagesController@blog')->name('blog')->middleware('auth');
+Route::get('/blog/{id}', 'PagesController@blogshow')->name('blog.show')->middleware('auth');
+Route::post('/blog/comment/{id}', 'PagesController@blogComments')->name('blog.comment')->middleware('auth');
 
-Route::get('/blog/categories/{slug}', 'PagesController@blogCategories')->name('blog.categories');
+Route::get('/blog/categories/{slug}', 'PagesController@blogCategories')->name('blog.categories')->middleware('auth');
 Route::get('/blog/tags/{slug}', 'PagesController@blogTags')->name('blog.tags');
-Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.author');
+Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.author')->middleware('auth');
 
-Route::get('/contact', 'PagesController@contact')->name('contact');
-Route::post('/contact', 'PagesController@messageContact')->name('contact.message');
+Route::get('/contact', 'PagesController@contact')->name('contact')->middleware('auth');
+Route::post('/contact', 'PagesController@messageContact')->name('contact.message')->middleware('auth');
 
 Auth::routes();
 
