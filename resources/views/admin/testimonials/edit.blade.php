@@ -37,7 +37,7 @@
 
                         @if(Storage::disk('public')->exists('testimonial/'.$testimonial->image))
                             <div class="form-group">
-                                <img src="{{Storage::url('testimonial/'.$testimonial->image)}}" id="testimonial-imgsrc-edit" alt="{{$testimonial->title}}" class="img-responsive img-rounded">
+                                <img src="{{asset(Storage::url('testimonial/'.$testimonial->image))}}" id="testimonial-imgsrc-edit" alt="{{$testimonial->title}}" class="img-responsive img-rounded">
                             </div>
                         @endif
                         <div class="form-group">

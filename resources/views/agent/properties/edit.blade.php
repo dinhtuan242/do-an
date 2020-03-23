@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="file-field input-field col s2">
                                     @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image )
-                                        <img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}" class="responsive-img">
+                                        <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}" class="responsive-img">
                                     @endif
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                                 </div>
                                 <div class="file-field input-field col s2">
                                     @if(Storage::disk('public')->exists('property/'.$property->floor_plan) && $property->floor_plan )
-                                        <img src="{{Storage::url('property/'.$property->floor_plan)}}" alt="{{$property->title}}" class="responsive-img">
+                                        <img src="{{asset(Storage::url('property/'.$property->floor_plan))}}" alt="{{$property->title}}" class="responsive-img">
                                     @endif
                                 </div>
                             </div>
@@ -256,7 +256,7 @@
             $.post("{{route('agent.gallery-delete')}}",{id:id,image:image},function(data){
                 if(data.msg == true){
                     $('#gallery-'+id).parent().remove();
-                    M.toast({html: 'Image deleted successfully.', classes:'green darken-4'})
+                    M.toast({html: 'Xoá hình ảnh thành công.', classes:'green darken-4'})
                 }
             });
             

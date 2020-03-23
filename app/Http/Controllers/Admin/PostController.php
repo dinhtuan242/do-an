@@ -50,8 +50,9 @@ class PostController extends Controller
             if (!Storage::disk('public')->exists('posts')) {
                 Storage::disk('public')->makeDirectory('posts');
             }
-            $postimage = Image::make($image)->resize(1600, 980)->save();
-            Storage::disk('public')->put('posts/' . $imagename, $postimage);
+            // $postimage = Image::make($image)->resize(1600, 980)->save();
+            // Storage::disk('public')->put('posts/' . $imagename, $postimage);
+            Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
         } else {
             $imagename = 'default.png';
         }
@@ -111,8 +112,9 @@ class PostController extends Controller
             if (Storage::disk('public')->exists('posts/' . $post->image)) {
                 Storage::disk('public')->delete('posts/' . $post->image);
             }
-            $postimage = Image::make($image)->resize(1600, 980)->save();
-            Storage::disk('public')->put('posts/' . $imagename, $postimage);
+            // $postimage = Image::make($image)->resize(1600, 980)->save();
+            // Storage::disk('public')->put('posts/' . $imagename, $postimage);
+            Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
         } else {
             $imagename = $post->image;
         }

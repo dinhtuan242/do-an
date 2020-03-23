@@ -1,11 +1,7 @@
 @component('mail::message')
-# Hello, {{ $name }}
-{{ $message }}
+# Xin chào {{ $name }}
+{!! $message !!}
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
+Cảm ơn bạn,<br>
 {{ config('app.name') }}
 @endcomponent

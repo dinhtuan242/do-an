@@ -15,7 +15,7 @@
 
                     @foreach($footerproperties as $property)
                     <li class="collection-item transparent clearfix p-0 border0">
-                        <span class="card-image-bg m-r-10" style="background-image:url({{Storage::url('property/'.$property->image)}});width:60px;height:45px;float:left;"></span>
+                        <span class="card-image-bg m-r-10" style="background-image:url({{asset(Storage::url('property/'.$property->image))}});width:60px;height:45px;float:left;"></span>
                         <div class="float-left">
                             <h5 class="font-18 m-b-0 m-t-5">
                                 <a href="{{ route('property.show',$property->slug) }}" class="white-text">{{ str_limit($property->title,40) }}</a>

@@ -53,7 +53,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>
                                         @if(Storage::disk('public')->exists('category/thumb/'.$category->image))
-                                            <img src="{{Storage::url('category/thumb/'.$category->image)}}" alt="{{$category->name}}" width="60" class="img-responsive img-rounded">
+                                            <img src="{{asset(Storage::url('category/thumb/'.$category->image))}}" alt="{{$category->name}}" width="60" class="img-responsive img-rounded">
                                         @endif
                                     </td>
                                     <td>{{$category->name}}</td>

@@ -27,8 +27,6 @@
                                     <th>Tên</th>
                                     <th>Loại tài sản</th>
                                     <th>Thành phố</th>
-                                    <th><i class="material-icons small-star p-t-10">comment</i></th>
-                                    <th><i class="material-icons small-star p-t-10">stars</i></th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -45,17 +43,6 @@
                                         
                                         <td>{{ ucfirst($property->type == 'house' ? 'Nhà' : 'Căn hộ') }}</td>
                                         <td>{{ ucfirst($property->city) }}</td>
-
-                                        <td class="center">
-                                            <span><i class="material-icons small-comment left">comment</i>{{ $property->comments_count }}</span>
-                                        </td>
-
-                                        <td class="center">
-                                            @if($property->featured == true)
-                                                <span class="teal-text"><i class="material-icons small-star">stars</i></span>
-                                            @endif
-                                        </td>
-    
                                         <td class="center">
                                             <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-small green waves-effect">
                                                 <i class="material-icons">visibility</i>

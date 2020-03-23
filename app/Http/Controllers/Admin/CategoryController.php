@@ -42,14 +42,16 @@ class CategoryController extends Controller
             if (!Storage::disk('public')->exists('category/slider')) {
                 Storage::disk('public')->makeDirectory('category/slider');
             }
-            $slider = Image::make($image)->resize(1600, 480)->save();
-            Storage::disk('public')->put('category/slider/' . $imagename, $slider);
+            // $slider = Image::make($image)->resize(1600, 480)->save();
+            // Storage::disk('public')->put('category/slider/' . $imagename, $slider);
+            Storage::disk('public')->put('category/slider/' . $imagename, \File::get($image));
 
             if (!Storage::disk('public')->exists('category/thumb')) {
                 Storage::disk('public')->makeDirectory('category/thumb');
             }
-            $thumb = Image::make($image)->resize(500, 330)->save();
-            Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
+            // $thumb = Image::make($image)->resize(500, 330)->save();
+            // Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
+            Storage::disk('public')->put('category/thumb/' . $imagename, \File::get($image));
         } else {
             $imagename = 'default.png';
         }
@@ -97,8 +99,9 @@ class CategoryController extends Controller
             if (Storage::disk('public')->exists('category/slider/' . $category->image)) {
                 Storage::disk('public')->delete('category/slider/' . $category->image);
             }
-            $slider = Image::make($image)->resize(1600, 480)->save();
-            Storage::disk('public')->put('category/slider/' . $imagename, $slider);
+            // $slider = Image::make($image)->resize(1600, 480)->save();
+            // Storage::disk('public')->put('category/slider/' . $imagename, $slider);
+            Storage::disk('public')->put('category/slider/' . $imagename, \File::get($image));
 
             if (!Storage::disk('public')->exists('category/thumb')) {
                 Storage::disk('public')->makeDirectory('category/thumb');
@@ -107,7 +110,8 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete('category/thumb/' . $category->image);
             }
             $thumb = Image::make($image)->resize(500, 330)->save();
-            Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
+            // Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
+            Storage::disk('public')->put('category/thumb/' . $imagename, \File::get($image));
         } else {
             $imagename = $category->image;
         }

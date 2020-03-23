@@ -37,7 +37,7 @@
 
                         @if(Storage::disk('public')->exists('category/thumb/'.$category->image))
                             <div class="form-group">
-                                <img src="{{Storage::url('category/thumb/'.$category->image)}}" alt="{{$category->name}}" class="img-responsive img-rounded">
+                                <img src="{{asset(Storage::url('category/thumb/'.$category->image))}}" alt="{{$category->name}}" class="img-responsive img-rounded">
                             </div>
                         @endif
                         <div class="form-group">

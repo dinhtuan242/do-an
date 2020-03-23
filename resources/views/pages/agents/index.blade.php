@@ -16,7 +16,7 @@
                 @foreach($agents as $agent)
                     <div class="col s12 m4">
                         <div class="card-panel center card-agent">
-                            <span class="card-image-bg" style="background-image:url({{Storage::url('users/'.$agent->image)}});"></span>
+                            <span class="card-image-bg" style="background-image:url({{asset(Storage::url('users/'.$agent->image))}});"></span>
                             <h5 class="m-b-0">
                                 <a href="{{ route('agents.show',$agent->id) }}" class="truncate">{{ $agent->name }}</a>
                             </h5>

@@ -147,8 +147,9 @@ class DashboardController extends Controller
             if (Storage::disk('public')->exists('users/' . $user->image) && $user->image != 'default.png') {
                 Storage::disk('public')->delete('users/' . $user->image);
             }
-            $userimage = Image::make($image)->save();
-            Storage::disk('public')->put('users/' . $imagename, $userimage);
+            // $userimage = Image::make($image)->save();
+            // Storage::disk('public')->put('users/' . $imagename, $userimage);
+            Storage::disk('public')->put('users/' . $imagename, \File::get($image));
         } else {
             $imagename = $user->image;
         }

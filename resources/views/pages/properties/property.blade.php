@@ -34,7 +34,7 @@
                         <div class="card">
                             <div class="card-image">
                                 @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                    <span class="card-image-bg" style="background-image:url({{Storage::url('property/'.$property->image)}});"></span>
+                                    <span class="card-image-bg" style="background-image:url({{asset(Storage::url('property/'.$property->image))}});"></span>
                                 @else
                                     <span class="card-image-bg"><span>
                                 @endif

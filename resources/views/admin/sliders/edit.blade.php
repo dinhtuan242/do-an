@@ -36,7 +36,7 @@
 
                         @if(Storage::disk('public')->exists('slider/'.$slider->image))
                             <div class="form-group">
-                                <img src="{{Storage::url('slider/'.$slider->image)}}" id="slider-imgsrc-edit" alt="{{$slider->title}}" class="img-responsive img-rounded">
+                                <img src="{{asset(Storage::url('slider/'.$slider->image))}}" id="slider-imgsrc-edit" alt="{{$slider->title}}" class="img-responsive img-rounded">
                             </div>
                         @endif
                         <div class="form-group">

@@ -43,7 +43,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>
                                         @if(Storage::disk('public')->exists('slider/'.$slider->image))
-                                            <img src="{{Storage::url('slider/'.$slider->image)}}" alt="{{$slider->title}}" width="160" class="img-responsive img-rounded">
+                                            <img src="{{asset(Storage::url('slider/'.$slider->image))}}" alt="{{$slider->title}}" width="160" class="img-responsive img-rounded">
                                         @endif
                                     </td>
                                     <td>{{$slider->title}}</td>

@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="card-image">
                             @if(Storage::disk('public')->exists('posts/'.$post->image))
-                                <img src="{{Storage::url('posts/'.$post->image)}}" alt="{{$post->title}}">
+                                <img src="{{asset(Storage::url('posts/'.$post->image))}}" alt="{{$post->title}}">
                             @endif
                         </div>
                         <div class="card-content">

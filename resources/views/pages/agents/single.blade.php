@@ -14,7 +14,7 @@
 
                     <div class="card horizontal card-no-shadow m-b-60">
                         <div class="card-image agent-image">
-                            <img src="{{Storage::url('users/'.$agent->image)}}" alt="{{ $agent->username }}" class="imgresponsive">
+                            <img src="{{asset(Storage::url('users/'.$agent->image))}}" alt="{{ $agent->username }}" class="imgresponsive">
                         </div>
                         <div class="card-stacked p-l-15">
                             <div class="">
@@ -34,7 +34,7 @@
 
                         <div class="card horizontal card-no-shadow border1">
                             <div class="card-image horizontal-bg-image">
-                                <span class="card-image-bg" style="background-image:url({{Storage::url('property/'.$property->image)}});"></span>
+                                <span class="card-image-bg" style="background-image:url({{asset(Storage::url('property/'.$property->image))}});"></span>
                             </div>
                             <div class="card-stacked">
                                 <div class="p-20 property-content">
