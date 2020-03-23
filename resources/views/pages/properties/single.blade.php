@@ -92,7 +92,7 @@
                     @else
                         <div class="single-image">
                             @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                <img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}" class="imgresponsive">
+                                <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}" class="imgresponsive">
                             @endif
                         </div>
                     @endif
@@ -118,7 +118,7 @@
                         </div>
                         <div class="card-image">
                             @if(Storage::disk('public')->exists('property/'.$property->floor_plan) && $property->floor_plan)
-                                <img src="{{Storage::url('property/'.$property->floor_plan)}}" alt="{{$property->title}}" class="imgresponsive">
+                                <img src="{{asset(Storage::url('property/'.$property->floor_plan))}}" alt="{{$property->title}}" class="imgresponsive">
                             @endif
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                                     @if($property->user)
                                         <div class="card horizontal card-no-shadow">
                                             <div class="card-image p-l-10 agent-image">
-                                                <img src="{{Storage::url('users/'.$property->user->image)}}" alt="{{ $property->user->username }}" class="imgresponsive">
+                                                <img src="{{asset(Storage::url('users/'.$property->user->image))}}" alt="{{ $property->user->username }}" class="imgresponsive">
                                             </div>
                                             <div class="card-stacked">
                                                 <div class="p-l-10 p-r-10">
@@ -275,16 +275,16 @@
                                             <input type="hidden" name="property_id" value="{{ $property->id }}">
 
                                             <div class="box">
-                                                <input type="text" name="name" placeholder="Họ tên"">
+                                                <input type="text" name="name" placeholder="Họ tên" value={{ Auth::user()->name }}>
                                             </div>
                                             <div class="box">
-                                                <input type="email" name="email" placeholder="Email">
+                                                <input type="email" name="email" placeholder="Email" value={{ Auth::user()->email }}>
                                             </div>
                                             <div class="box">
-                                                <input type="number" name="phone" placeholder="Điện thoại"">
+                                                <input type="number" name="phone" placeholder="Điện thoại">
                                             </div>
                                             <div class="box">
-                                                <textarea name="message" placeholder="Ghi chú""></textarea>
+                                                <textarea name="message" placeholder="Ghi chú"></textarea>
                                             </div>
                                             <div class="box">
                                                 <button id="msgsubmitbtn" class="btn waves-effect waves-light w100 teal" type="submit">
@@ -324,7 +324,7 @@
                                             <div class="card horizontal card-no-shadow m-0">
                                                 @if($property_related->image)
                                                 <div class="card-image">
-                                                    <img src="{{Storage::url('property/'.$property_related->image)}}" alt="{{$property_related->title}}" class="imgresponsive">
+                                                    <img src="{{asset(Storage::url('property/'.$property_related->image))}}" alt="{{$property_related->title}}" class="imgresponsive">
                                                 </div>
                                                 @endif
                                                 <div class="card-stacked">

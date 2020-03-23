@@ -7,8 +7,8 @@
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             @foreach($property->gallery as $gallery)
             <div>
-                <img data-u="image" src="{{Storage::url('property/gallery/'.$gallery->name)}}" />
-                <img data-u="thumb" src="{{Storage::url('property/gallery/'.$gallery->name)}}" />
+                <img data-u="image" src="{{asset(Storage::url('property/gallery/'.$gallery->name))}}" />
+                <img data-u="thumb" src="{{asset(Storage::url('property/gallery/'.$gallery->name))}}" />
             </div>
             @endforeach
         </div>

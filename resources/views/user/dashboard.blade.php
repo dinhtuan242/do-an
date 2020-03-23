@@ -20,39 +20,6 @@
                     <h4 class="agent-title">DASHBOARD</h4>
                     
                     <div class="agent-content">
-
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="box teal white-text p-30">
-                                    <i class="material-icons left">comment</i>
-                                    <span class="truncate uppercase bold font-18">Số bình luận</span>
-                                    <h4 class="m-t-10 m-b-0">{{ $commentcount }}</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="box teal white-text p-20">
-                                    <i class="material-icons left font-18">comment</i>
-                                    <span class="truncate uppercase bold">Bình luận gần đây</span>
-                                </div>
-                                <div class="box-content">
-                                    @foreach($comments as $key => $comment)
-                                        <div class="grey lighten-4">
-                                            <span class="border-bottom display-block p-15  grey-text-d-2">
-                                                {{ ++$key }}. {{ $comment->body }}
-                                                
-                                            </span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div>
-                                    {{ $comments->links() }}
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
         
                 </div>

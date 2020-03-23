@@ -45,7 +45,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>
                                         @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                            <img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}" width="60" class="img-responsive img-rounded">
+                                            <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}" width="60" class="img-responsive img-rounded">
                                         @endif
                                     </td>
                                     <td>

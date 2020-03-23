@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-image">
                                 @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                    <span class="card-image-bg" style="background-image:url({{Storage::url('property/'.$property->image)}});"></span>
+                                    <span class="card-image-bg" style="background-image:url({{asset(Storage::url('property/'.$property->image))}});"></span>
                                 @else
                                     <span class="card-image-bg"><span>
                                 @endif
@@ -43,7 +43,6 @@
 
                                 <h5>
                                     {{ $property->price }} triệu đồng
-                                    <div class="right" id="propertyrating-{{$property->id}}"></div>
                                 </h5>
                             </div>
                             <div class="card-action property-action">
@@ -51,17 +50,15 @@
                                     <i class="material-icons">check_box</i>
                                     Phòng ngủ: <strong>{{ $property->bedroom}}</strong> 
                                 </span>
+                                </br>
                                 <span class="btn-flat">
                                     <i class="material-icons">check_box</i>
                                     Phòng tắm: <strong>{{ $property->bathroom}}</strong> 
                                 </span>
+                                </br>
                                 <span class="btn-flat">
                                     <i class="material-icons">check_box</i>
                                     Diện tích: <strong>{{ $property->area}}</strong> mét vuông
-                                </span>
-                                <span class="btn-flat">
-                                    <i class="material-icons">comment</i> 
-                                    <strong>{{ $property->comments_count}}</strong>
                                 </span>
                             </div>
                         </div>
@@ -87,7 +84,7 @@
                         <div class="card testimonial-card">
                             <span style="height:20px;display:block;"></span>
                             <div class="card-image testimonial-image">
-                                <img src="{{Storage::url('testimonial/'.$testimonial->image)}}">
+                                <img src="{{asset(Storage::url('testimonial/'.$testimonial->image))}}">
                             </div>
                             <div class="card-content">
                                 <span class="card-title">{{$testimonial->name}}</span>
@@ -120,12 +117,12 @@
                     <div class="card">
                         <div class="card-image">
                             @if(Storage::disk('public')->exists('posts/'.$post->image) && $post->image)
-                                <span class="card-image-bg" style="background-image:url({{Storage::url('posts/'.$post->image)}});"></span>
+                                <span class="card-image-bg" style="background-image:url({{asset(Storage::url('posts/'.$post->image))}});"></span>
                             @endif
                         </div>
                         <div class="card-content">
                             <span class="card-title tooltipped" data-position="bottom" data-tooltip="{{$post->title}}">
-                                <a href="{{ route('blog.show',$post->slug) }}">{{ str_limit($post->title,18) }}</a>
+                                <a href="{{ route('blog.show',$post->slug) }}">{{ str_limit($post->title,120) }}</a>
                             </span>
                         </div>
                         <div class="card-action blog-action">
@@ -137,12 +134,6 @@
                                 <a href="{{ route('blog.categories',$category->slug) }}" class="btn-flat">
                                     <i class="material-icons">folder</i>
                                     <span>{{$category->name}}</span>
-                                </a>
-                            @endforeach
-                            @foreach($post->tags as $key => $tag)
-                                <a href="{{ route('blog.tags',$tag->slug) }}" class="btn-flat">
-                                    <i class="material-icons">label</i>
-                                    <span>{{$tag->name}}</span>
                                 </a>
                             @endforeach
                             <a href="#" class="btn-flat disabled">

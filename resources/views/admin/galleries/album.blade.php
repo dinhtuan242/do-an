@@ -30,7 +30,7 @@
                                         @if(!empty($album->galleryimages))
                                             @foreach($album->galleryimages as $key => $galleryimage)
                                                 @if($key == 0)
-                                                    <span style="background-image:url({{Storage::url('gallery/'.$galleryimage->image)}});background-size:cover;height:100px;display:block;background-repeat:no-repeat;background-position:center;"></span>
+                                                    <span style="background-image:url({{asset(Storage::url('gallery/'.$galleryimage->image))}});background-size:cover;height:100px;display:block;background-repeat:no-repeat;background-position:center;"></span>
                                                 @endif
                                             @endforeach
                                         @endif

@@ -18,7 +18,7 @@
                                 <div class="card-content property-content">
                                     @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
                                         <div class="card-image blog-content-image">
-                                            <img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}">
+                                            <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}">
                                         </div>
                                     @endif
                                     <span class="card-title search-title" title="{{$property->title}}">

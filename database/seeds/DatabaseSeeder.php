@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'role_id' => 2,
                 'name' => 'Chủ nhà đất',
                 'username' => 'agent',
-                'email' => 'agent@agent.com',
+                'email' => 'vudinhtuan242@agent.com',
                 'image' => 'user.png',
                 'about' => '',
                 'password' => bcrypt('123456'),

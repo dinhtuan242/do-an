@@ -168,10 +168,19 @@ class PagesController extends Controller
             'message' => 'required',
         ]);
 
+        $agentInfo = User::where('id', $request['agent_id'])->first();
+        $name = $agentInfo['name'];
+        $message = '<strong>Khách hàng:</strong> ' . $request['name'] 
+                    . ' muốn hẹn gặp bạn. <br/><strong>Số điện thoại:</strong> ' . $request['phone'] 
+                    . '. <br/><strong>Email:</strong> ' . $request['email'] 
+                    . ' <br/>Hãy chủ động liên hệ sớm nhé!';
+        $mailfrom = config('mail.from.address');
+        
+        Mail::to($agentInfo->email)->send(new Contact($message, $name, $mailfrom));                                                                                                                                                                                                   
         Message::create($request->all());
 
         if ($request->ajax()) {
-            return response()->json(['message' => 'Message send successfully.']);
+            return response()->json(['message' => 'Gửi lịch hẹn thành công']);
         }
     }
 

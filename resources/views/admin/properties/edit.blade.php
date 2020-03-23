@@ -105,7 +105,7 @@
                         @foreach($property->gallery as $gallery)
                         <div class="gallery-image-edit" id="gallery-{{$gallery->id}}">
                             <button type="button" data-id="{{$gallery->id}}" class="btn btn-danger btn-sm"><i class="material-icons">delete_forever</i></button>
-                            <img class="img-responsive" src="{{Storage::url('property/gallery/'.$gallery->name)}}" alt="{{$gallery->name}}">
+                            <img class="img-responsive" src="{{asset(Storage::url('property/gallery/'.$gallery->name))}}" alt="{{$gallery->name}}">
                         </div>
                         @endforeach
                     </div>
@@ -203,7 +203,7 @@
                 <div class="body">
                     <div class="form-group">
                         @if(Storage::disk('public')->exists('property/'.$property->floor_plan) && $property->floor_plan )
-                            <img src="{{Storage::url('property/'.$property->floor_plan)}}" alt="{{$property->title}}" class="img-responsive img-rounded"> <br>
+                            <img src="{{asset(Storage::url('property/'.$property->floor_plan))}}" alt="{{$property->title}}" class="img-responsive img-rounded"> <br>
                         @endif
                         <input type="file" name="floor_plan">
                     </div>
@@ -218,7 +218,7 @@
 
                     <div class="form-group">
                         @if(Storage::disk('public')->exists('property/'.$property->image))
-                            <img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}" class="img-responsive img-rounded"> <br>
+                            <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}" class="img-responsive img-rounded"> <br>
                         @endif
                         <input type="file" name="image">
                     </div>

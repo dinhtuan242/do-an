@@ -7,7 +7,7 @@
                     @if(isset($navbarsettings[0]) && $navbarsettings[0]['name'])
                         {{ $navbarsettings[0]['name'] }}
                     @else
-                        Rent and sale
+                        Bất động sản Việt
                     @endif
                     <i class="material-icons left">location_city</i>
                 </a>

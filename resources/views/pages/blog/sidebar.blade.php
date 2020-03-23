@@ -18,7 +18,7 @@
         <h3 class="font-18 m-t-0 bold uppercase">Thể loại bài viết</h3>
         <ul>
             @foreach($categories as $category)
-                <li class="category-bg-image" style="background-image:url({{Storage::url('category/slider/'.$category->image)}});">
+                <li class="category-bg-image" style="background-image:url({{asset(Storage::url('category/slider/'.$category->image))}});">
 
                     <a href="{{ route('blog.categories',$category->slug) }}">
 
