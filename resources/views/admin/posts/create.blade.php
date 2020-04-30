@@ -53,7 +53,7 @@
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('categories') ? 'focused error' : ''}}">
                             <label>Chọn thể loại</label>
-                            <select name="categories[]" class="form-control show-tick" multiple data-live-search="true">
+                            <select name="categories[]" class="form-control show-tick" multiple>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
@@ -64,7 +64,7 @@
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('tags') ? 'focused error' : ''}}">
                             <label>Chọn Tag</label>
-                            <select name="tags[]" class="form-control show-tick" multiple data-live-search="true">
+                            <select name="tags[]" class="form-control show-tick" multiple>
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach

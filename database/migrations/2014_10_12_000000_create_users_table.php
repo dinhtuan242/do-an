@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('default.png');
             $table->string('about')->nullable();
             $table->string('password');
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

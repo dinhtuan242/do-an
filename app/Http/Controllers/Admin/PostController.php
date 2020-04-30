@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Toastr;
+use File;
 
 class PostController extends Controller
 {
@@ -53,6 +54,11 @@ class PostController extends Controller
             // $postimage = Image::make($image)->resize(1600, 980)->save();
             // Storage::disk('public')->put('posts/' . $imagename, $postimage);
             Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = 'default.png';
         }
@@ -115,6 +121,11 @@ class PostController extends Controller
             // $postimage = Image::make($image)->resize(1600, 980)->save();
             // Storage::disk('public')->put('posts/' . $imagename, $postimage);
             Storage::disk('public')->put('posts/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/posts/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/posts/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = $post->image;
         }

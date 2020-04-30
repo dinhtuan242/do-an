@@ -10,39 +10,39 @@
 
                     <div class="searchbar">
                         <div class="input-field col s12 m3">
-                            <input type="text" name="city" id="autocomplete-input" class="autocomplete custominputbox" autocomplete="off">
+                            <input value="{{ $city ?? '' }}" type="text" name="city" id="autocomplete-input" class="autocomplete custominputbox" autocomplete="off">
                             <label for="autocomplete-input">Tên thành phố hoặc khu vực</label>
                         </div>
 
                         <div class="input-field col s12 m2">
                             <select name="type" class="browser-default">
-                                <option value="" disabled selected>Chọn loại tài sản</option>
-                                <option value="house">Nhà</option>
-                                <option value="apartment">Căn hộ</option>
+                                <option value="" disabled {{ isset($type) ? '' : 'selected'}}>Chọn loại tài sản</option>
+                                <option value="house" {{ isset($type) ? ($type == 'house' ? 'selected' : '') : '' }}>Nhà</option>
+                                <option value="apartment" {{ isset($type) ? ($type == 'apartment' ? 'selected' : '') : '' }}>Căn hộ</option>
                             </select>
                         </div>
 
                         <div class="input-field col s12 m2">
                             <select name="purpose" class="browser-default">
-                                <option value="" disabled selected>Chọn kiểu tài sản</option>
-                                <option value="sale">Bán</option>
-                                <option value="rent">Cho thuê</option>
+                                <option value="" disabled {{ isset($purpose) ? '' : 'selected'}}>Chọn kiểu tài sản</option>
+                                <option value="sale" {{ isset($purpose) ? ($purpose == 'sale' ? 'selected' : '') : '' }}>Bán</option>
+                                <option value="rent" {{ isset($purpose) ? ($purpose == 'rent' ? 'selected' : '') : '' }}>Cho thuê</option>
                             </select>
                         </div>
 
                         <div class="input-field col s12 m2">
                             <select name="bedroom" class="browser-default">
-                                <option value="" disabled selected>Số phòng ngủ</option>
+                                <option value="" disabled {{ isset($bathroomNumber) ? '' : 'selected'}}>Số phòng ngủ</option>
                                 @if(isset($bedroomdistinct))
-                                    @foreach($bedroomdistinct as $bedroom)
-                                        <option value="{{$bedroom->bedroom}}">{{$bedroom->bedroom}}</option>
+                                    @foreach($bedroomdistinct as $bedroomcurrent)
+                                        <option value="{{$bedroomcurrent->bedroom}}" {{ isset($bathroomNumber) ? ($bedroomcurrent->bedroom == $bathroomNumber ? 'selected' : '') : '' }}>{{$bedroomcurrent->bedroom}}</option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
 
                         <div class="input-field col s12 m2">
-                            <input type="text" name="maxprice" id="maxprice" class="custominputbox">
+                            <input value="{{ $maxprice ?? '' }}" type="text" name="maxprice" id="maxprice" class="custominputbox">
                             <label for="maxprice">Giá</label>
                         </div>
                         

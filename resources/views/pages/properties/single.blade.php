@@ -65,10 +65,7 @@
                     </div>
 
                     <div>
-                        @if($property->featured == 1)
-                            <a class="btn-floating btn-small disabled"><i class="material-icons">star</i></a>
-                        @endif
-
+                        <a class="btn-floating btn-small" style="background-color: #fb483a !important" onclick="reportUser({{$property->user->id}})"><i class="material-icons">report</i></a>
                         <span class="btn btn-small disabled b-r-20">Phòng ngủ: {{ $property->bedroom}} </span>
                         <span class="btn btn-small disabled b-r-20">Phòng tắm: {{ $property->bathroom}} </span>
                         <span class="btn btn-small disabled b-r-20">Diện tích: {{ $property->area}} mét vuông</span>
@@ -245,7 +242,7 @@
                                     @if($property->user)
                                         <div class="card horizontal card-no-shadow">
                                             <div class="card-image p-l-10 agent-image">
-                                                <img src="{{asset(Storage::url('users/'.$property->user->image))}}" alt="{{ $property->user->username }}" class="imgresponsive">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/48px-User_icon_2.svg.png" alt="{{ $property->user->username }}" class="imgresponsive">
                                             </div>
                                             <div class="card-stacked">
                                                 <div class="p-l-10 p-r-10">
@@ -351,12 +348,45 @@
     @php
         $rating = ($rating == null) ? 0 : $rating;
     @endphp
-
 @endsection
 
 @section('scripts')
-
+    <script src="https://unpkg.com/sweetalert2@7.19.3/dist/sweetalert2.all.js"></script>
     <script>
+
+        function reportUser(id){
+            Swal.fire({
+                title: 'Vui lòng điền lý do báo cáo',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Báo cáo',
+                showLoaderOnConfirm: true,
+                preConfirm: (reason) => {
+                    return fetch(`{{ route('user-manager.report', $property->user->id) }}`)
+                    .then(response => {
+                        if (!response.ok) {
+                        throw new Error(response.statusText)
+                        }
+                        return response.json()
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                        `Báo cáo thất bại: ${error}`
+                        )
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                    title: `Báo cáo người dùng này thành công!`,
+                    })
+                }
+            })
+        }
         $(function(){
 
             $.ajaxSetup({

@@ -38,6 +38,13 @@
                     </a>
                 </li>
 
+                <li class="{{ Request::is('admin/user-manager*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.user-manager.index') }}">
+                        <i class="material-icons">supervised_user_circle</i>
+                        <span>Quản lý người dùng</span>
+                    </a>
+                </li>
+
                 <li class="header">Bài</li>
                 <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}">
                     <a href="{{ route('admin.categories.index') }}">

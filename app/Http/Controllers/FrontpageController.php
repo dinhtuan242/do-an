@@ -14,7 +14,7 @@ class FrontpageController extends Controller
     public function index()
     {
         $sliders = Slider::latest()->get();
-        $properties = Property::latest()->where('featured', 1)->with('rating')->withCount('comments')->take(6)->get();
+        $properties = Property::latest()->where('active', 1)->with('rating')->withCount('comments')->take(6)->get();
         $testimonials = Testimonial::latest()->get();
         $posts = Post::latest()->where('status', 1)->take(6)->get();
 
@@ -27,7 +27,9 @@ class FrontpageController extends Controller
         $type = $request->type;
         $purpose = $request->purpose;
         $bedroom = $request->bedroom;
+        $bedroomNumber = $request->bedroom;
         $bathroom = $request->bathroom;
+        $bathroomNumber = $request->bathroom;
         $minprice = $request->minprice;
         $maxprice = $request->maxprice;
         $minarea = $request->minarea;
@@ -66,8 +68,16 @@ class FrontpageController extends Controller
                 return $query->where('featured', '=', 1);
             })
             ->paginate(10);
-
-        return view('pages.search', compact('properties'));
+        return view('pages.search', compact([
+            'properties',
+            'city',
+            'type',
+            'purpose',
+            'bedroomNumber',
+            'bathroomNumber',
+            'maxarea',
+            'featured',
+        ]));
     }
 
 }

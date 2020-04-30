@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Toastr;
+use File;
 
 class GalleryController extends Controller
 {
@@ -57,6 +58,11 @@ class GalleryController extends Controller
             // $imagegallery = Image::make($image)->save();
             // Storage::disk('public')->put('gallery/' . $imagename, $imagegallery);
             Storage::disk('public')->put('gallery/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/gallery/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/gallery/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
 
             $imagelink = Storage::url($imagename);
 

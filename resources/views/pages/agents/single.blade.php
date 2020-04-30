@@ -14,7 +14,7 @@
 
                     <div class="card horizontal card-no-shadow m-b-60">
                         <div class="card-image agent-image">
-                            <img src="{{asset(Storage::url('users/'.$agent->image))}}" alt="{{ $agent->username }}" class="imgresponsive">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/48px-User_icon_2.svg.png" alt="{{ $agent->username }}" class="imgresponsive">
                         </div>
                         <div class="card-stacked p-l-15">
                             <div class="">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <h5 class="uppercase">Danh sách tài sản của {{ $agent->name }}</h5>
+                    <h5 class="uppercase">Danh sách tài sản của <strong>{{ $agent->name }}</strong></h5>
 
                     {{-- AGENT PROPERTIES --}}
                     @foreach($properties as $property)
@@ -43,7 +43,7 @@
                                     </span>
                                     <h5>
                                         {{ $property->price }} triệu đồng
-                                        <small class="right p-r-10">{{ $property->type }} for {{ $property->purpose }}</small>
+                                        <small class="right p-r-10">{{ $property->purpose == 'sale' ? 'Bán' : 'Cho thuê'}} {{ $property->type == 'house' ? 'Nhà' : 'Căn hộ'}}</small>
                                     </h5>
                                 </div>
 
@@ -60,12 +60,6 @@
                                         <i class="material-icons">check_box</i>
                                         Diện tích: <strong>{{ $property->area}}</strong> mét vuông
                                     </span>
-                                    
-                                    @if($property->featured == 1)
-                                        <span class="right featured-stars">
-                                            <i class="material-icons">stars</i>
-                                        </span>
-                                    @endif
                                 </div>
                             </div>
                         </div>

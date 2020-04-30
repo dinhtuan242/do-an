@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Properties')
+@section('title', 'User')
 
 @push('styles')
 
@@ -10,19 +10,21 @@
 @endpush
 
 @section('content')
-
     <div class="block-header">
-        <a href="{{route('admin.properties.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
+        <a href="{{route('admin.user-manager.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
             <i class="material-icons left">add</i>
             <span>Thêm mới </span>
+        </a>&nbsp;
+        <a href="{{route('admin.user-manager.block')}}" class="waves-effect waves-light btn right m-b-15 btn-danger">
+            <i class="material-icons left">block</i>
+            <span>Người dùng bị tố cáo</span>
         </a>
     </div>
-
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-teal">
-                    <h2>Danh sách tài sản</h2>
+                    <h2>Danh sách người dùng</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,44 +32,28 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Tên tài sản</th>
-                                    <th>Tác giả</th>
-                                    <th>Loại tài sản</th>
-                                    <th>Kiểu tài sản</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
                                     <th width="150">Hành động</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach( $properties as $key => $property )
+                                @foreach( $users as $key => $user )
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>
-                                        @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                            <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}" width="60" class="img-responsive img-rounded">
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <span title="{{$property->title}}">
-                                            {{ str_limit($property->title,10) }}
-                                        </span>
-                                    </td>
-                                    <td>{{$property->user->name}}</td>
-                                    <td>{{$property->type == 'house' ? 'Nhà' : 'Căn hộ'}}</td>
-                                    <td>{{$property->purpose == 'sale' ? 'Bán' : 'Cho thuê'}}</td>
-
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->status == '1' ? 'Hoạt động' : 'Bị khóa'}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-success btn-sm waves-effect">
-                                            <i class="material-icons">visibility</i>
-                                        </a>
-                                        <a href="{{route('admin.properties.edit',$property->slug)}}" class="btn btn-info btn-sm waves-effect">
+                                        <a href="{{route('admin.user-manager.edit',$user->id)}}" class="btn btn-info btn-sm waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <button type="button" class="btn btn-danger btn-sm waves-effect" onclick="deletePost({{$property->id}})">
+                                        <button type="button" class="btn btn-danger btn-sm waves-effect" onclick="deleteUser({{$user->id}})">
                                             <i class="material-icons">delete</i>
                                         </button>
-                                        <form action="{{route('admin.properties.destroy',$property->slug)}}" method="POST" id="del-post-{{$property->id}}" style="display:none;">
+                                        <form action="{{route('admin.user-manager.destroy',$user->id)}}" method="POST" id="del-user-{{$user->id}}" style="display:none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>
@@ -102,11 +88,11 @@
     <script src="{{ asset('backend/js/pages/tables/jquery-datatable.js') }}"></script>
 
     <script>
-        function deletePost(id){
+        function deleteUser(id){
             
             swal({
             title: 'Cảnh báo',
-            text: "Bạn có chắc chắn muốn xóa tài sản này?",
+            text: "Bạn có chắc chắn muốn xóa tài khoản này",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -114,10 +100,10 @@
             confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.value) {
-                    document.getElementById('del-post-'+id).submit();
+                    document.getElementById('del-user-'+id).submit();
                     swal(
-                    'Xóa thành công',
-                    'Tài sản đã được xóa',
+                    'Xóa tài khoản thành công',
+                    'Tài khoản này đã bị Xóa',
                     'success'
                     )
                 }

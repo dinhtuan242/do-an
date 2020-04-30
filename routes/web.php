@@ -27,9 +27,12 @@ Route::get('/blog/tags/{slug}', 'PagesController@blogTags')->name('blog.tags');
 Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.author')->middleware('auth');
 
 Route::get('/contact', 'PagesController@contact')->name('contact')->middleware('auth');
-Route::post('/contact', 'PagesController@messageContact')->name('contact.message')->middleware('auth');
+Route::post('/contact', 'PagesController@messag.1eContact')->name('contact.message')->middleware('auth');
+Route::post('/user/report/{id}', 'UserManagerController@report')->name('user-manager.report');
 
 Auth::routes();
+Route::get('admin/user-manager/block', 'Admin\UserManagerController@block')->name('admin.user-manager.block')->middleware(['auth', 'admin']);
+Route::put('admin/user-manager/block', 'UserManagerController@updateActive')->name('admin.user-manager.updateActice')->middleware(['auth', 'admin']);
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin'], 'as' => 'admin.'], function () {
 
@@ -39,6 +42,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('posts', 'PostController');
     Route::resource('features', 'FeatureController');
     Route::resource('properties', 'PropertyController');
+    Route::resource('user-manager', 'UserManagerController');
     Route::post('properties/gallery/delete', 'PropertyController@galleryImageDelete')->name('gallery-delete');
 
     Route::resource('sliders', 'SliderController');

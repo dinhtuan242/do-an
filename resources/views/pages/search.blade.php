@@ -12,62 +12,59 @@
 
                 <div class="col s12 m12">
 
-                    @foreach($properties as $property)
-                        <div class="card horizontal">
-                            <div>
-                                <div class="card-content property-content">
-                                    @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                        <div class="card-image blog-content-image">
-                                            <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}">
-                                        </div>
-                                    @endif
-                                    <span class="card-title search-title" title="{{$property->title}}">
-                                        <a href="{{ route('property.show',$property->slug) }}">{{ $property->title }}</a>
-                                    </span>
-                                    
-                                    <div class="address">
-                                        <i class="small material-icons left">location_city</i>
-                                        <span>{{ ucfirst($property->city) }}</span>
-                                    </div>
-                                    <div class="address">
-                                        <i class="small material-icons left">place</i>
-                                        <span>{{ ucfirst($property->address) }}</span>
-                                    </div>
-
-                                    <h5>
-                                        {{ $property->price }} triệu đồng
-                                        <small class="right">{{ $property->type }} for {{ $property->purpose }}</small>
-                                    </h5>
-
-                                </div>
-                                <div class="card-action property-action clearfix">
-                                    <span class="btn-flat">
-                                        <i class="material-icons">check_box</i>
-                                        Phòng ngủ: <strong>{{ $property->bedroom}}</strong> 
-                                    </span>
-                                    <span class="btn-flat">
-                                        <i class="material-icons">check_box</i>
-                                        Phòng tắm: <strong>{{ $property->bathroom}}</strong> 
-                                    </span>
-                                    <span class="btn-flat">
-                                        <i class="material-icons">check_box</i>
-                                        Diện tích: <strong>{{ $property->area}}</strong> mét vuông
-                                    </span>
-                                    <span class="btn-flat">
-                                        <i class="material-icons">comment</i>
-                                        {{ $property->comments_count}}
-                                    </span>
-
-                                    @if($property->featured == 1)
-                                        <span class="right featured-stars">
-                                            <i class="material-icons">stars</i>
+                    @if (count($properties) > 0)
+                        @foreach($properties as $property)
+                            <div class="card horizontal">
+                                <div>
+                                    <div class="card-content property-content">
+                                        @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
+                                            <div class="card-image blog-content-image">
+                                                <img src="{{asset(Storage::url('property/'.$property->image))}}" alt="{{$property->title}}">
+                                            </div>
+                                        @endif
+                                        <span class="card-title search-title" title="{{$property->title}}">
+                                            <a href="{{ route('property.show',$property->slug) }}">{{ $property->title }}</a>
                                         </span>
-                                    @endif                                    
+                                        
+                                        <div class="address">
+                                            <i class="small material-icons left">location_city</i>
+                                            <span>{{ ucfirst($property->city) }}</span>
+                                        </div>
+                                        <div class="address">
+                                            <i class="small material-icons left">place</i>
+                                            <span>{{ ucfirst($property->address) }}</span>
+                                        </div>
 
+                                        <h5>
+                                            {{ $property->price }} triệu đồng
+                                            <small class="right">{{ $property->purpose == 'sale' ? 'Bán' : 'Cho thuê'}} {{ $property->type == 'house' ? 'Nhà' : 'Căn hộ'}}</small>
+                                        </h5>
+
+                                    </div>
+                                    <div class="card-action property-action clearfix">
+                                        <span class="btn-flat">
+                                            <i class="material-icons">check_box</i>
+                                            Phòng ngủ: <strong>{{ $property->bedroom}}</strong> 
+                                        </span>
+                                        <span class="btn-flat">
+                                            <i class="material-icons">check_box</i>
+                                            Phòng tắm: <strong>{{ $property->bathroom}}</strong> 
+                                        </span>
+                                        <span class="btn-flat">
+                                            <i class="material-icons">check_box</i>
+                                            Diện tích: <strong>{{ $property->area}}</strong> mét vuông
+                                        </span>
+                                        <span class="btn-flat">
+                                            <i class="material-icons">comment</i>
+                                            {{ $property->comments_count}}
+                                        </span>                               
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <h4 class="section-heading">Không có tài sản nào được tìm thấy</h4>
+                    @endif
 
 
                     <div class="m-t-30 m-b-60 center">

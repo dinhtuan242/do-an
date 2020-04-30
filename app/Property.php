@@ -10,8 +10,7 @@ class Property extends Model
         'title', 'price', 'featured', 'purpose', 'type', 'image',
         'slug', 'bedroom', 'bathroom', 'city', 'city_slug', 'address',
         'area', 'agent_id', 'description', 'video', 'floor_plan',
-        'location_latitude', 'location_longitude', 'nearby',
-
+        'location_latitude', 'location_longitude', 'nearby', 'active',
     ];
 
     public function features()

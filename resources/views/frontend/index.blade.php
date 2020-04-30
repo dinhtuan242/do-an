@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="address">
                                     <i class="small material-icons left">check_box</i>
-                                    <span>{{ ucfirst($property->type) }} for {{ $property->purpose }}</span>
+                                    <span>{{ $property->purpose == 'sale' ? 'Bán' : 'Cho thuê' }} {{ ucfirst($property->type == 'house' ? 'Nhà' : 'Căn hộ') }}</span>
                                 </div>
 
                                 <h5>

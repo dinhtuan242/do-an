@@ -33,7 +33,7 @@
                         <li><a href="{{ route('register') }}"><i class="material-icons">person_add</i></a></li>
                     @else
                         <li>
-                            <a class="dropdown-trigger" href="#!" data-target="dropdown-auth-frontend">
+                            <a class="dropdown-trigger" href="javascript:;" data-target="dropdown-auth-frontend">
                                 {{ ucfirst(Auth::user()->username) }}
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>

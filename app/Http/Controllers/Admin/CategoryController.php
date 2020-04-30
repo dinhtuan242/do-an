@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Toastr;
+use File;
 
 class CategoryController extends Controller
 {
@@ -45,6 +46,11 @@ class CategoryController extends Controller
             // $slider = Image::make($image)->resize(1600, 480)->save();
             // Storage::disk('public')->put('category/slider/' . $imagename, $slider);
             Storage::disk('public')->put('category/slider/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/scategory/slider/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/category/slider/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
 
             if (!Storage::disk('public')->exists('category/thumb')) {
                 Storage::disk('public')->makeDirectory('category/thumb');
@@ -52,6 +58,11 @@ class CategoryController extends Controller
             // $thumb = Image::make($image)->resize(500, 330)->save();
             // Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
             Storage::disk('public')->put('category/thumb/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/scategory/thumb/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/category/thumb/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = 'default.png';
         }
@@ -102,6 +113,11 @@ class CategoryController extends Controller
             // $slider = Image::make($image)->resize(1600, 480)->save();
             // Storage::disk('public')->put('category/slider/' . $imagename, $slider);
             Storage::disk('public')->put('category/slider/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/scategory/slider/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/category/slider/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
 
             if (!Storage::disk('public')->exists('category/thumb')) {
                 Storage::disk('public')->makeDirectory('category/thumb');
@@ -112,6 +128,11 @@ class CategoryController extends Controller
             // $thumb = Image::make($image)->resize(500, 330)->save();
             // Storage::disk('public')->put('category/thumb/' . $imagename, $thumb);
             Storage::disk('public')->put('category/thumb/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/scategory/thumb/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/category/thumb/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = $category->image;
         }

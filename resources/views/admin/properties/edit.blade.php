@@ -126,6 +126,17 @@
                 <div class="body">
 
                     <div class="form-group form-float">
+                        <div class="form-line {{$errors->has('active') ? 'focused error' : ''}}">
+                            <label>Trạng thái</label>
+                            <select name="active" class="form-control show-tick">
+                                <option value="">-- Chọn một --</option>
+                                <option value="1" {{ $property->active== '1' ? 'selected' : '' }}>Hiển thị</option>
+                                <option value="0" {{ $property->active== '0' ? 'selected' : '' }}>Không hiển thị</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-float">
                         <div class="form-line {{$errors->has('purpose') ? 'focused error' : ''}}">
                             <label>Kiểu tài sản</label>
                             <select name="purpose" class="form-control show-tick">

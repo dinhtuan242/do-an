@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Toastr;
+use File;
 
 class SliderController extends Controller
 {
@@ -43,6 +44,11 @@ class SliderController extends Controller
             }
             // $slider = Image::make($image)->resize(1600, 480)->save();
             Storage::disk('public')->put('slider/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = 'default.png';
         }
@@ -88,6 +94,11 @@ class SliderController extends Controller
             // Storage::disk('public')->put($imagename, $sliderimg);
             // $extension = $image->getClientOriginalExtension();
             Storage::disk('public')->put('slider/' . $imagename, \File::get($image));
+            if (config('app.env') == 'test') {
+                $full_path_source = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public/slider/'. $imagename;
+                $full_path_dest = $_SERVER['DOCUMENT_ROOT'].'/public/storage/slider/' . $imagename;
+                File::copy($full_path_source, $full_path_dest);
+            }
         } else {
             $imagename = $slider->image;
         }

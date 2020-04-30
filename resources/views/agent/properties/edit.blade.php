@@ -84,6 +84,21 @@
 
                             <div class="row">
                                 <div class="col s3">
+                                    <label class="label-custom" for="active">Trạng thái</label>
+                                    <p>
+                                        <label>
+                                            <input class="with-gap" name="active" value="1" type="radio" {{ $property->active == '1' ? 'checked' : '' }} />
+                                            <span>Chưa giao dịch</span>
+                                        </label>
+                                    <p>
+                                    </p>
+                                        <label>
+                                            <input class="with-gap" name="active" value="0" type="radio" {{ $property->active == '0' ? 'checked' : '' }} />
+                                            <span>Đã giao dịch</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="col s3">
                                     <label class="label-custom" for="type">Loại tài sản</label>
                                     <p>
                                         <label>
@@ -113,6 +128,8 @@
                                         </label>
                                     </p>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="input-field col s6">
                                     <select multiple name="features[]">
                                         <option value="" disabled>Chọn tính năng</option>
@@ -127,7 +144,6 @@
                                     <label class="label-custom">Tính năng</label>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="file-field input-field col s10">
                                     <div class="btn teal">
